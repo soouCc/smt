@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b3d83946-c2e5-4880-89c2-c20de6046eb9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/smt" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1bsiyPRPg7WdOz8Zp2aTYcAYzSf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\gowork\src\smt\service\db_service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\gowork\src\smt" />
+    </key>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>https://goproxy.io</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="617" y="215" key="#Notifications" timestamp="1589444923153">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="617" y="215" key="#Notifications/2560.0.1280.687/0.0.2048.1112@0.0.2048.1112" timestamp="1589444923153" />
+    <state x="833" y="469" key="Github.CreateGistDialog" timestamp="1589446257687">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="833" y="469" key="Github.CreateGistDialog/2560.0.1280.687/0.0.2048.1112@0.0.2048.1112" timestamp="1589446257687" />
+    <state x="526" y="198" key="SettingsEditor" timestamp="1589443036456">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="526" y="198" key="SettingsEditor/2560.0.1280.687/0.0.2048.1112@0.0.2048.1112" timestamp="1589443036456" />
+    <state x="633" y="256" width="782" height="600" key="find.popup" timestamp="1589427500726">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="633" y="256" width="782" height="600" key="find.popup/2560.0.1280.687/0.0.2048.1112@0.0.2048.1112" timestamp="1589427500726" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1589442447184">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/2560.0.1280.687/0.0.2048.1112@0.0.2048.1112" timestamp="1589442447184" />
+  </component>
+</project>
