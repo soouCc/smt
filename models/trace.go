@@ -9,6 +9,7 @@ package models
 import (
 	"smt/utils"
 	"strings"
+	"sync"
 )
 
 type Trace struct {
@@ -23,11 +24,11 @@ type Trace struct {
 	Tags         map[string]interface{} `json:"tags"`
 }
 
-func (t *Trace)Analysis(str string)  {
-	data_arr := strings.Split(str,"|")
+func (t *Trace) Analysis(str string) bool {
+	data_arr := strings.Split(str, "|")
 
-	if len(data_arr)!=9{
-		return
+	if len(data_arr) != 9 {
+		return false
 	}
 	t.TraceId = data_arr[0]
 	t.StartTime = utils.Json2int(data_arr[1])
@@ -43,20 +44,24 @@ func (t *Trace)Analysis(str string)  {
 	pars := strings.Split(data_arr[8], "&")
 	for _, par := range pars {
 		parkv := strings.Split(par, "=")
-		t.Tags[parkv[0]] = parkv[1]
+		if len(parkv) == 2 {
+			t.Tags[parkv[0]] = parkv[1]
+		}
 	}
+
+	return true
 }
 
-func (t *Trace)Check()bool  {
-	if t==nil{
+func (t *Trace) Check() bool {
+	if t == nil {
 		return false
 	}
 
-	for k,v:=range t.Tags{
-		if k=="http.status_code"&&v!=200{
+	for k, v := range t.Tags {
+		if k == "http.status_code" && v != "200" {
 			return true
 		}
-		if k=="error"&&v==1{
+		if k == "error" && v == "1" {
 			return true
 		}
 	}
@@ -64,12 +69,35 @@ func (t *Trace)Check()bool  {
 }
 
 type TraceMap struct {
-	Data map[string] TraceSlice  //key:traceId  value:调用链路
+	sync.RWMutex
+	Data map[string]TraceSlice //key:traceId  value:调用链路
 }
 
-type TraceSlice []Trace
+func NewTraceMap() *TraceMap {
+	tm := new(TraceMap)
+	tm.Data = make(map[string]TraceSlice, 0)
+	return tm
+}
+
+func (tm *TraceMap) Get(TraceId string) []*Trace {
+	tm.RLock()
+	defer tm.RUnlock()
+	return tm.Data[TraceId]
+}
+
+func (tm *TraceMap) Add(t *Trace) {
+	tm.Lock()
+	defer tm.Unlock()
+	if tm.Data[t.TraceId] == nil {
+		tm.Data[t.TraceId] = TraceSlice{}
+	}
+	tm.Data[t.TraceId] = append(tm.Data[t.TraceId], t)
+}
+
+type TraceSlice []*Trace
+
 func (s TraceSlice) Len() int { return len(s) }
 
-func (s TraceSlice) Swap(i, j int){ s[i], s[j] = s[j], s[i] }
+func (s TraceSlice) Swap(i, j int) { s[i], s[j] = s[j], s[i] }
 
 func (s TraceSlice) Less(i, j int) bool { return s[i].StartTime < s[j].StartTime }

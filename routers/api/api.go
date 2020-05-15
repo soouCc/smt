@@ -8,28 +8,26 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"smt/conf"
 )
 
-func Ready(c *gin.Context)  {
+func Ready(c *gin.Context) {
+	BackSuccess(c, nil)
+}
 
+func SetParamter(c *gin.Context) {
+	conf.DataPort = c.Param("dataport")
+	c.JSON(http.StatusOK, gin.H{})
+	c.Abort()
+
+	//todo 开始拉去数据源
 
 }
 
-func SetParamter(c *gin.Context)  {
+func BackSuccess(c *gin.Context, data interface{}) {
 
+	c.JSON(http.StatusOK, gin.H{})
 
+	c.Abort()
 }
-
-func Trace1Data(c *gin.Context)  {
-
-
-}
-
-func Trace2Data(c *gin.Context)  {
-
-
-}
-
-
-
-

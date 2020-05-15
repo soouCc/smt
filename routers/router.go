@@ -7,10 +7,10 @@
 package routers
 
 import (
-	"smt/middle"
-	"smt/routers/api"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"smt/middle"
+	"smt/routers/api"
 )
 
 func InitRounters() *gin.Engine {
@@ -26,8 +26,6 @@ func InitRounters() *gin.Engine {
 	//获取订单价格
 	router.GET("/ready", api.Ready)
 	router.GET("/setParamter", api.SetParamter)
-	router.GET("/trace1.data", api.Trace1Data)
-	router.GET("/trace2.data", api.Trace2Data)
 
 	return router
 }

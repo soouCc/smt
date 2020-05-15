@@ -6,4 +6,6 @@
 */
 package conf
 
-const ServiceName  =  ""
+const ServiceName = ""
+
+var DataPort = ""
