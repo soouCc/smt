@@ -22,7 +22,8 @@ type Trace struct {
 	//SpanName     string                 `json:"spanName"`
 	//Host         string                 `json:"host"`
 	Tags map[string]interface{}
-	Data string `json:"data"`
+	Data string
+	Error          bool
 }
 
 func (t *Trace) Analysis(str string) bool {
@@ -46,8 +47,24 @@ func (t *Trace) Analysis(str string) bool {
 	pars := strings.Split(data_arr[8], "&")
 	for _, par := range pars {
 		parkv := strings.Split(par, "=")
-		if len(parkv) == 2 && (parkv[0] == "http.status_code" || parkv[0] == "error") {
-			t.Tags[parkv[0]] = parkv[1]
+		if (parkv[0] != "http.status_code" && parkv[0] != "error"){
+			continue
+		}
+		//if len(parkv) == 2 && (parkv[0] == "http.status_code" || parkv[0] == "error") {
+		//	t.Tags[parkv[0]] = parkv[1]
+		//}
+
+		switch parkv[0] {
+		case "http.status_code":
+			if parkv[1]!="200"{
+				t.Error = true
+				return true
+			}
+		case "error":
+			if parkv[1]=="1"{
+				t.Error = true
+				return true
+			}
 		}
 	}
 	return true
@@ -57,15 +74,16 @@ func (t *Trace) Check() bool {
 	if t == nil {
 		return false
 	}
-
-	for k, v := range t.Tags {
-		if k == "http.status_code" && v != "200" {
-			return true
-		}
-		if k == "error" && v == "1" {
-			return true
-		}
+	status_code,ok := t.Tags["http.status_code"].(string)
+	if ok&&status_code!="200"{
+		return true
 	}
+
+	 error,ok := t.Tags["error"].(string)
+	if ok&&error=="1"{
+		return true
+	}
+
 	return false
 }
 

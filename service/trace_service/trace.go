@@ -117,13 +117,9 @@ func SetDate(data string, tmp *TraceMap) {
 					if t.Analysis(v) {
 						tmp.Add(t)
 					}
-					if t.Check() {
+					if t.Error {
 						smp.Add(t.TraceId)
 					}
-					//d:=time.Now().Sub(t1).Milliseconds()
-					//if d>0{
-					//	logger.Debug(d)
-					//}
 					w.Done()
 				case <-dones:
 					return
@@ -136,7 +132,9 @@ func SetDate(data string, tmp *TraceMap) {
 		ch <- v
 	}
 	w.Wait()
-	dones <- "ok"
+	for i:=0;i<td;i++ {
+		dones <- "ok"
+	}
 }
 
 func GetMD5Encode(str []byte) string {

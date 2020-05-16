@@ -7,7 +7,6 @@
 package trace_service
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/soouCc/go-logger/logger"
 	"io/ioutil"
@@ -21,24 +20,24 @@ import (
 
 func init() {
 
-	b, err := ioutil.ReadFile("C:\\Users\\56305\\Desktop\\data\\trace1.data") // just pass the file name
+	b, err := ioutil.ReadFile("C:\\Users\\Administrator\\Desktop\\data\\trace1.data") // just pass the file name
 	if err != nil {
 		fmt.Print(err)
 	}
 	str = string(b)
 
-	b1, err := ioutil.ReadFile("C:\\Users\\56305\\Desktop\\data\\trace2.data") // just pass the file name
+	b1, err := ioutil.ReadFile("C:\\Users\\Administrator\\Desktop\\data\\trace2.data") // just pass the file name
 	if err != nil {
 		fmt.Print(err)
 	}
 	str1 = string(b1)
 
-	da, err := ioutil.ReadFile("C:\\Users\\56305\\Desktop\\data\\checkSum.data") // just pass the file name
-	if err != nil {
-		fmt.Print(err)
-	}
-	da_map = map[string]string{}
-	_ = json.Unmarshal(da, &da_map)
+	//da, err := ioutil.ReadFile("C:\\Users\\Administrator\\Desktop\\data\\checkSum.data") // just pass the file name
+	//if err != nil {
+	//	fmt.Print(err)
+	//}
+	//da_map = map[string]string{}
+	//_ = json.Unmarshal(da, &da_map)
 
 }
 
@@ -80,5 +79,6 @@ func TestSetDate(t *testing.T) {
 	//t2:=time.Now()
 	//source_map := Doaction()
 	_ = Doaction()
+	logger.Debug("计算时间:",time.Now().Sub(t1))
 	//logger.Debug("计算时间:",time.Now().Sub(t2),len(source_map.Data))
 }
